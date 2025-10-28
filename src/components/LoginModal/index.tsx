@@ -1,6 +1,6 @@
 // src/components/LoginModal.tsx
 import React, { useState } from 'react';
-import * as Dialog from '@radix-ui/react-dialog';
+import { Dialog } from "radix-ui";
 import { createRoot } from 'react-dom/client';
 
 // ========== 类型定义 ==========
