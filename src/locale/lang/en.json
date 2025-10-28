@@ -106,6 +106,7 @@
   "budget-manager": "Budget",
   "login": "Login...",
   "login-to-github": "Login to Github",
+  "login-to-password": "Login to Password",
   "or-use-an-exist-token": "or use an exist token",
   "token-expired-please-re-login-to-github-from-setting-page": "Token expired, Please re-login to Github from setting page.",
   "please-enter-your-github-token": "Please enter your github token",

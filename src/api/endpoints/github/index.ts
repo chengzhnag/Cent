@@ -1,5 +1,7 @@
+import { toast } from "sonner";
 import { BillIndexedDBStorage } from "@/database/storage";
 import { Gitray } from "@/gitray";
+import { LoginModal } from '@/components/LoginModal';
 import type { Bill } from "@/ledger/type";
 import { t } from "@/locale";
 import type { Book, SyncEndpointFactory } from "../type";
@@ -22,11 +24,39 @@ const manuallyLogin = async () => {
     location.reload();
 };
 
+const passwordLogin = async () => {
+    LoginModal.show({
+        onLogin: (creds, call) => {
+            console.log('登录:', creds);
+            fetch('https://open.952737.xyz/api/auth', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Basic ${btoa(`${creds.username}:${creds.password}`)}`
+                }})
+	        .then(res => res.json())
+            .then(res => {
+                const token = res?.data?.githubToken;
+                if (token) {
+                    toast.success('登录成功, 即将刷新页面');
+                    call?.();
+                    setTimeout(() => {
+                        LoginAPI.manuallySetToken(token);
+                        location.reload();
+                    }, 1000);
+                }
+            }).catch(() => {
+                toast.error('登录失败，请检查用户名和密码');
+            });
+        },
+    });
+};
+
 export const GithubEndpoint: SyncEndpointFactory = {
     type: "github",
     name: "Github",
     login: LoginAPI.login,
     manuallyLogin,
+    passwordLogin,
     init: () => {
         LoginAPI.afterLogin();
         const repo = new Gitray<Bill>({

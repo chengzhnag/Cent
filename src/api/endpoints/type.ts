@@ -53,5 +53,6 @@ export type SyncEndpointFactory = {
     name: string;
     login: () => void;
     manuallyLogin?: () => void;
+    passwordLogin?: () => void;
     init: () => SyncEndpoint;
 };

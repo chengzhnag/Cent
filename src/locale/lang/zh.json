@@ -108,6 +108,7 @@
   "budget-manager": "预算管理",
   "login": "登录中",
   "login-to-github": "使用 Github 登录",
+  "login-to-password": "使用账号密码登录",
   "or-use-an-exist-token": "或者使用现有的token",
   "token-expired-please-re-login-to-github-from-setting-page": "Token已过期，请到设置页面重新登录",
   "please-enter-your-github-token": "请输入你的Github Token",

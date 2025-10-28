@@ -45,6 +45,9 @@ export const StorageAPI = {
         if (type === "github") {
             return GithubEndpoint.login();
         }
+        if (type === "password") {
+            return GithubEndpoint.passwordLogin?.();
+        }
         if (type === "offline") {
             return OfflineEndpoint.login();
         }

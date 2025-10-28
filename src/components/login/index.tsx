@@ -34,12 +34,12 @@ export default function Login() {
                                 <div className="flex flex-col gap-1">
                                     <Button
                                         onClick={() => {
-                                            StorageAPI.loginWith("github");
+                                            StorageAPI.loginWith("password");
                                         }}
                                     >
-                                        <i className="icon-[mdi--github]"></i>
+                                        {/* <i className="icon-[mdi--github]"></i> */}
                                         <div className="flex-1">
-                                            {t("login-to-github")}
+                                            {t("login-to-password")}
                                         </div>
                                     </Button>
                                     <button
