@@ -38,13 +38,16 @@ const passwordLogin = async () => {
                 const token = res?.data?.githubToken;
                 if (token) {
                     toast.success('登录成功, 即将刷新页面');
-                    call?.();
+                    call?.(true);
                     setTimeout(() => {
                         LoginAPI.manuallySetToken(token);
                         location.reload();
                     }, 1000);
+                } else {
+                    call?.(false);
                 }
             }).catch(() => {
+                call?.(false);
                 toast.error('登录失败，请检查用户名和密码');
             });
         },
